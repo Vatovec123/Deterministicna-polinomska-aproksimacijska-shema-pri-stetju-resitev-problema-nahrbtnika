@@ -1,0 +1,100 @@
+\documentclass[a4paper,15pt]{article}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\pagenumbering{arabic}
+\usepackage{wrapfig}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{amsfonts}
+\usepackage{lipsum}
+\usepackage{amsmath,amsthm}
+\usepackage{ragged2e}
+\usepackage{framed}
+
+
+
+\newtheorem{theorem}{Izrek}
+
+\title{ \textbf{ Štetje rešitev klasičnega problema nahrbtnika} \\
+  \large Kratko poročilo pri predmetu Finančni praktikum}
+\author{Kristina Vatovec in Žan Mikola}
+\date{December 2020}
+
+\begin{document}
+\begin{titlepage}
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+\end{titlepage}
+
+
+\section{Opis problema}
+
+
+Podanih je n elementov  z celoštevilskimi težami \(w_{1},...,w_{n}\) in kapaciteto C, ki je prav tako celo število  Privzemimo štetje klasičnega problema nahrbtnika.
+S pomočjo algoritma, ki temelji na dinamičnem programiranje želimo poiskati oceno za  število rešitev problema znatraj relativne napake \(1 \pm \epsilon\)  v polinomskem času n in \(1/\epsilon\).
+ 
+\vspace{3mm}
+\noindent Preden nadaljujemo, omenimo naslednji izrek, ki je bistvenega pomena pri samem problemu.
+
+\begin{theorem} 
+Podane so teže \(w_{1},...,w_{n}\) in kapaciteta C pri problemu nahrbtnika. Naj bo Z število rešitev problema. Obstaja deterministični algoritem, ki za vsak \( \epsilon \in [0,1]\) vrne \(\uppercase{z}^{'} \)za katerega velja  
+\( \uppercase{z} \leq \uppercase{z} \leq \uppercase{z}(1 + \epsilon) \) .
+
+\end{theorem}
+
+
+\noindent Poglejmo si še funkcijo T, ki je definirana v spodnjem algoritmu.
+
+\begin{framed}
+Vhod: Celaštevila \(w_{1},...,w_{n}\), C in \( \epsilon > 0\).
+\begin{enumerate}
+\item Postavimo \(\uppercase{t}[0,0] = 0\) and \(\uppercase{t}[o,j] = \infty \) za \(j > 0\).
+\item Postavimo \( \uppercase{q} = ( 1+ \epsilon/(n + 1))\) in \( s= \lceil n log_{\uppercase{q}}2 \rceil\).
+\item Za \( i = 1 \to n\), za \( j = 0 \to s \), postavim
+
+\[ 
+\uppercase{t}[i, j]=\ min_{\alpha \in [0,1]} max \left\{
+\begin{array}{ll}
+      \uppercase{t}[i - 1, \lceil j + log_{\uppercase{q}}\alpha \rceil ], \\
+      \uppercase{t}[i - 1, \lceil j + log_{\uppercase{q}}(1 - \alpha) \rceil ] + w_{i}, 
+      
+\end{array} 
+\right. 
+\]
+kjer po dogovoru velja \( \uppercase{t}[i - 1, k] = 0 \) za \( k <0\).
+
+\item Naj bo
+\[
+j^{'} := max\{j : \uppercase{t}[n, j] \leq \uppercase{C} \}.
+\]
+\item Izhod \(\uppercase{Z}^{'} := \uppercase{Q}^{j^{'} + 1} \)
+\end{enumerate}
+\end{framed}
+
+
+
+
+\noindent Izkaže se, da izhodni podatek \(\uppercase{z}^{'}\) zadošča zgoraj napisanem izreku, kar pa je tisto, kar si želimo pri algoritmu za naš problem.
+
+\newpage
+\section{Načrt dela}
+
+\noindent Naloga, ki sva si jo zastavila v prihodnje je implementacija zgornjega algoritma. Algoritem bova napisala v programskem jeziku Python.
+Ko bova algoritem pripravila, sledi eksperimentalni del. Poskušala, bova ugotoviti ali pri različnih vhodnih podatkih prihaja do sprememb v časovni zahtevnosti. 
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
