@@ -14,7 +14,7 @@
 \usepackage{amsmath,amsthm}
 \usepackage{ragged2e}
 \usepackage{framed}
-
+\usepackage{amssymb}
 
 
 \newtheorem{theorem}{Izrek}
@@ -36,19 +36,19 @@
 
 
 Podanih je n elementov  z celoštevilskimi težami \(w_{1},...,w_{n}\) in kapaciteto C, ki je prav tako celo število  Privzemimo štetje klasičnega problema nahrbtnika.
-S pomočjo algoritma, ki temelji na dinamičnem programiranje želimo poiskati oceno za  število rešitev problema znatraj relativne napake \(1 \pm \epsilon\)  v polinomskem času n in \(1/\epsilon\).
+S pomočjo algoritma, ki temelji na dinamičnem programiranju želimo poiskati oceno za  število rešitev problema znotraj relativne napake \(1 \pm \epsilon\)  v polinomskem času n in \(1/\epsilon\).
  
 \vspace{3mm}
 \noindent Preden nadaljujemo, omenimo naslednji izrek, ki je bistvenega pomena pri samem problemu.
 
 \begin{theorem} 
 Podane so teže \(w_{1},...,w_{n}\) in kapaciteta C pri problemu nahrbtnika. Naj bo Z število rešitev problema. Obstaja deterministični algoritem, ki za vsak \( \epsilon \in [0,1]\) vrne \(\uppercase{z}^{'} \)za katerega velja  
-\( \uppercase{z} \leq \uppercase{z} \leq \uppercase{z}(1 + \epsilon) \) .
+\( \uppercase{z} \leq \uppercase{z}^{'} \leq \uppercase{z}(1 + \epsilon) \) .
 
 \end{theorem}
 
 
-\noindent Poglejmo si še funkcijo T, ki je definirana v spodnjem algoritmu.
+\noindent Poglejmo si še funkcijo $T : \{0, \ldots, n\} \times \{0, \ldots, s\} \rightarrow \mathbb{R}_{\geq 0} \cup \{\infty \}  $ , ki je definirana v spodnjem algoritmu.
 
 \begin{framed}
 Vhod: Celaštevila \(w_{1},...,w_{n}\), C in \( \epsilon > 0\).
@@ -78,7 +78,7 @@ j^{'} := max\{j : \uppercase{t}[n, j] \leq \uppercase{C} \}.
 
 
 
-
+\noindent Pri iskanju minimuna funkcije T v odvisnost od parametra $\alpha \in [0,1]$, je v resnici dovolj gledati le $\alpha$, ki ustrezajo vrednostim diskretne množice $S$. Za $ j \in \{0, 1, \ldots, s\}$, je množiča $S = S_{1} \cup S_{2}$, kjer $S_{1} = \{Q^{-j}, \ldots, Q^0\}$ in $S_{2} = \{1-Q^{0}, \ldots, 1- Q^{-j}\}$ \\
 \noindent Izkaže se, da izhodni podatek \(\uppercase{z}^{'}\) zadošča zgoraj napisanem izreku, kar pa je tisto, kar si želimo pri algoritmu za naš problem.
 
 \newpage
@@ -86,11 +86,9 @@ j^{'} := max\{j : \uppercase{t}[n, j] \leq \uppercase{C} \}.
 
 \noindent Naloga, ki sva si jo zastavila v prihodnje je implementacija zgornjega algoritma. Algoritem bova napisala v programskem jeziku Python.
 Ko bova algoritem pripravila, sledi eksperimentalni del. Poskušala, bova ugotoviti ali pri različnih vhodnih podatkih prihaja do sprememb v časovni zahtevnosti. 
-
-
-
-
-
+  \\
+Pri samem programiranju bo največja težava napisati algoritem, ki bo v uglednem času ocenil število rešitev za večje število elementov, ki lahko damo v nahrbtnik. Sama rešitev $Z^{'}$, največkrat ne bo vračala naravnih števil, vendar bomo lahko zaradi enakosti v Izreku 1 lahko ocenili dano rešitev.
+\\ Ko bova končala z algoritmom, ga bova morala še testirati. V ta namen bova naredila generator podatkov, ki bo izbral naključno število elemntov in podal nijhove teže, ter izbral naključno težo nahrbtnika. Pričakujeva, da bo za velike $n$ program počasen, saj je njegova računska zahtevnost polinomska.
 
 
 
