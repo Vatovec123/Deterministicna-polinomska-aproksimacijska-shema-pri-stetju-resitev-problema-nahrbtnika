@@ -78,17 +78,24 @@ j^{'} := max\{j : \uppercase{t}[n, j] \leq \uppercase{C} \}.
 
 
 
-\noindent Pri iskanju minimuna funkcije T v odvisnost od parametra $\alpha \in [0,1]$, je v resnici dovolj gledati le $\alpha$, ki ustrezajo vrednostim diskretne množice $S$. Za $ j \in \{0, 1, \ldots, s\}$, je množiča $S = S_{1} \cup S_{2}$, kjer $S_{1} = \{Q^{-j}, \ldots, Q^0\}$ in $S_{2} = \{1-Q^{0}, \ldots, 1- Q^{-j}\}$ \\
-\noindent Izkaže se, da izhodni podatek \(\uppercase{z}^{'}\) zadošča zgoraj napisanem izreku, kar pa je tisto, kar si želimo pri algoritmu za naš problem.
+\noindent Pri iskanju minimuna funkcije T v odvisnost od parametra $\alpha \in [0,1]$, je v resnici dovolj gledati le $\alpha$, ki ustrezajo vrednostim diskretne množice $S$. Za $ j \in \{0, 1, \ldots, s\}$, je množiča $S = S_{1} \cup S_{2}$, kjer $S_{1} = \{Q^{-j}, \ldots, Q^0\}$ in $S_{2} = \{1-Q^{0}, \ldots, 1- Q^{-j}\}$. \\
+\vspace{3mm}\\
+\noindent Izkaže se, da izhodni podatek \(\uppercase{z}^{'}\) zadošča zgoraj napisanem izreku, kar pa je tisto, kar si želimo pri algoritmu za naš problem.\\
 
-\newpage
+\vspace{3mm}
+\noindent V tem algoritmu smo uporabili funkcijo T, vendar na prvi pogled ni povsem jasno kaj pomeni vrednost, ki jo vrne. Fukcija  je T je torej aproksimacijska funkcija funkcije $\tau$.  Funkcija $\tau :  \{0, \ldots, n\} \times \mathbb{R}_{\geq 0}  \rightarrow \mathbb{R} \cup \{\pm \infty \} $, kjer $\tau (i,a )$ vrne najmanjši $C$, Pri katerem obstaja vsaj $a$ rešitev problema nahrbtnika z težami $ \omega_{1} \ldots \omega_{n}$ in kapaciteto $C$. Fukcijo $\tau$ ne znamo efektivno izračunati, zato definiramo fukcijo $T$. \\
+ 
+
+\noindent Torej točno število rešitev problema nahrbtnika je $$Z= max\{a: \tau (n,a) \leq C\} $$
+
 \section{Načrt dela}
 
 \noindent Naloga, ki sva si jo zastavila v prihodnje je implementacija zgornjega algoritma. Algoritem bova napisala v programskem jeziku Python.
 Ko bova algoritem pripravila, sledi eksperimentalni del. Poskušala, bova ugotoviti ali pri različnih vhodnih podatkih prihaja do sprememb v časovni zahtevnosti. 
-  \\
+  \vspace{3mm} \\
 Pri samem programiranju bo največja težava napisati algoritem, ki bo v uglednem času ocenil število rešitev za večje število elementov, ki lahko damo v nahrbtnik. Sama rešitev $Z^{'}$, največkrat ne bo vračala naravnih števil, vendar bomo lahko zaradi enakosti v Izreku 1 lahko ocenili dano rešitev.
-\\ Ko bova končala z algoritmom, ga bova morala še testirati. V ta namen bova naredila generator podatkov, ki bo izbral naključno število elemntov in podal nijhove teže, ter izbral naključno težo nahrbtnika. Pričakujeva, da bo za velike $n$ program počasen, saj je njegova računska zahtevnost polinomska.
+\vspace{3mm}\\
+Ko bova končala z algoritmom, ga bova morala še testirati. V ta namen bova naredila generator podatkov, ki bo izbral naključno število elemntov in podal nijhove teže, ter izbral naključno težo nahrbtnika. Pričakujeva, da bo za velike $n$ program počasen, saj je njegova računska zahtevnost polinomska.
 
 
 
