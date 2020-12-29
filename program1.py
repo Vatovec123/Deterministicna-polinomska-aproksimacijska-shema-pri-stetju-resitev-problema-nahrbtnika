@@ -1,11 +1,33 @@
 import math
 import random
 
+#def odstrani(teze,C):
+##    nove = []
+#    for i in teze:
+##        if i <= C:
+#            nove.append(i)
+#        else:
+#            pass
+#    teze = nove    
+#    print(teze) 
+
+
+
+def odstrani(teze,C):
+    teze = [x for x in teze if x <= C]
+    print(teze)
+
 
 
 def resitve(teze,C, epsilon):
     global n,Q,s
+    teze = [x for x in teze if x <= C]
     n = len(teze)
+    
+    vsota = sum(teze)
+    if vsota <= C:
+        return 2 ** n
+    
     Q = (1 + (epsilon / (n + 1)))
     s = math.ceil(n * math.log(2,Q))
     T = [[0 for stvari in range(s+1)] for row in range(n+1)]
@@ -60,5 +82,5 @@ def resitve(teze,C, epsilon):
     return resitev
 
     
-print(resitve([2,3,6],10,0.1))
+print(resitve([1,2,3,4,5],1000,0.2))
 
