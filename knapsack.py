@@ -72,7 +72,7 @@ def stej_resitve2(teze,C, epsilon):
                     druga_vrednost = 0
                 else:
                     prva_vrednost = T(i-1,math.floor(j + math.log(alpha,Q)))
-                    druga_vrednost = T(i-1,math.floor(j + math.log(1 - alpha,Q))) +teze[i-1]
+                    druga_vrednost = T(i-1,math.floor(j + math.log(1 - alpha,Q))) + teze[i-1]
                     vrednosti.append(max(prva_vrednost,druga_vrednost))
             return min(vrednosti)  
     for j in range(s,-1,-1):
@@ -83,4 +83,6 @@ def stej_resitve2(teze,C, epsilon):
             pass
     return Q **(resitve+1)
 
-print(stej_resitve2([1], 4, 0.005))
+print(stej_resitve2([1,2], 4, 0.005))
+
+

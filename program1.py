@@ -1,5 +1,6 @@
 import math
 import random
+import sys
 
 #def odstrani(teze,C):
 ##    nove = []
@@ -11,6 +12,11 @@ import random
 #    teze = nove    
 #    print(teze) 
 
+def seznam_tez():
+    n = random.randint(1, 20)
+    randomlist = random.sample(range(1, 500), n)
+    return randomlist
+
 
 
 def odstrani(teze,C):
@@ -20,10 +26,9 @@ def odstrani(teze,C):
 
 
 def resitve(teze,C, epsilon):
-    global n,Q,s
-    teze = [x for x in teze if x <= C]
+    teze = [x for x in teze if x <=C]
     n = len(teze)
-    
+
     vsota = sum(teze)
     if vsota <= C:
         return 2 ** n
@@ -72,9 +77,7 @@ def resitve(teze,C, epsilon):
     mozni_j_crta = []   
     for j in range(s+1):
         if T[n][j] <= C:
-            mozni_j_crta.append(j)
-        else:
-            pass 
+            mozni_j_crta.append(j) 
     if mozni_j_crta == []:
         return 1 #ne daš nič v nahrbntik     
     j_crta = mozni_j_crta[-1]                
@@ -82,5 +85,24 @@ def resitve(teze,C, epsilon):
     return resitev
 
     
-print(resitve([1,2,3,4,5],1000,0.2))
+#print(resitve([73, 3, 56, 2, 79, 6, 43, 51, 45, 13, 4, 58, 36, 87, 63, 63, 95, 59, 75, 76],1000,0.2))
+
+
+
+def glavno():
+
+  
+    global resitve
+
+    teze = seznam_tez()
+    C = random.randint(0, 10000)
+    
+    for epsilon in [0.9,0.1, 0.01, 0.0001]:
+        res = resitve(teze, C, epsilon)
+        print(C)
+        print(teze)
+        print(res)
+
+  
+glavno()    
 
