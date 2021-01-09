@@ -145,34 +145,34 @@ def generiraj(st, max_teza):
 #Poskusi na 5 točkah:
 # Max teža naj bo 50:
 
-#časi = []
-#rezultati = []
-#for i in range(10):
-#    generiraj(5,50)
-#
-#
-##    tabela_časov = []
-#    tabela_rezultatov = []
-#    for epsilon in [0.1 , 0.3, 0.5, 0.7, 0.9]:
-#        start_time = time.time()
-#        res = resitve(seznam, C, epsilon)
-##        #print('Število rešitev je {}'.format(res))
-#        elapsed_time = time.time() - start_time
-#        #print('Čas računanja je {}'.format(elapsed_time))
-#        tabela_časov.append(elapsed_time)
-#        tabela_rezultatov.append(res)
-#    print(tabela_časov)
-#    print(tabela_rezultatov)#
-#
-#    časi.append(tabela_časov)
-#    rezultati.append(tabela_rezultatov)
-#
-#
-#    with xlsxwriter.Workbook('časi.xlsx') as workbook:
-#        worksheet = workbook.add_worksheet()
-#
-#        for row_num, data in enumerate(časi):
-#            worksheet.write_row(row_num, 0, data)
+časi = []
+rezultati = []
+for i in range(10):
+    generiraj(5,50)
+
+
+    tabela_časov = []
+    tabela_rezultatov = []
+    for epsilon in [0.1 , 0.3, 0.5, 0.7, 0.9]:
+        start_time = time.time()
+        res = resitve(seznam, C, epsilon)
+        #print('Število rešitev je {}'.format(res))
+        elapsed_time = time.time() - start_time
+        #print('Čas računanja je {}'.format(elapsed_time))
+        tabela_časov.append(elapsed_time)
+        tabela_rezultatov.append(res)
+    print(tabela_časov)
+    print(tabela_rezultatov)#
+
+    časi.append(tabela_časov)
+    rezultati.append(tabela_rezultatov)
+
+
+    with xlsxwriter.Workbook('časi.xlsx') as workbook:
+        worksheet = workbook.add_worksheet()
+
+        for row_num, data in enumerate(časi):
+            worksheet.write_row(row_num, 0, data)
 #-----------------------------------------------------------------------------
 
 #-----------------------------------------------------------------------------

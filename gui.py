@@ -1,3 +1,4 @@
+import xlsxwriter
 from program1 import resitve
 from tkinter import *
 
@@ -5,7 +6,7 @@ root = Tk()
 
 root.title('Računanje števila rešitev problema nahrbtnika')
 
-root.iconbitmap('d:/Faks/3. letnik/fp/program/program.ico')
+#root.iconbitmap('d:/Faks/3. letnik/fp/program/program.ico')
 
 
 Label1 = Label(root, text = 'Vnesi teže predmetov:')
